@@ -12,7 +12,9 @@ from utils.extract_url import extract_document_url
 
 class ECHRDocument:
     """
-    Classe che rappresenta una pronuncia della Corte Europea dei Diritti dell'Uomo
+   IT: Classe che rappresenta una pronuncia della Corte Europea dei Diritti dell'Uomo
+
+   EN: Class that represents a ruling of the European Court of Human Rights.
     """
 
     def __init__(self, html_path: str = None, pdf_path: str = None, file_name: str = None):
@@ -20,6 +22,12 @@ class ECHRDocument:
         :param html_path: percorso in cui si trova il file html che contiene il documento
         :param pdf_path: percorso in cui si trova il file pdf che contiene il documento
         :param file_name: nome del file SENZA ESTENSIONE
+
+        EN: 
+        :param html_path: path where the HTML file containing the document is located  
+        :param pdf_path: path where the PDF file containing the document is located  
+        :param file_name: name of the file WITHOUT EXTENSION  
+
         """
         if html_path is not None and file_name is not None:
             path = html_path + "/" + file_name + ".html"
@@ -175,6 +183,12 @@ class ECHRDocument:
         div class="row noticefield" contenente la riga
         div class="span2 noticefieldheading" contenente il nome del campo
         div class="col-offset-2 noticefieldvalue" contiene il valore del campo
+
+        EN: 
+        div id="notice" containing the case detail section
+        div class="row noticefield" containing the row
+        div class="span2 noticefieldheading" containing the field name
+        div class="col-offset-2 noticefieldvalue" containing the field value
         """
         heading_list = soup.find_all("div", {"class": "span2 noticefieldheading"})
         value_list = soup.find_all("div", {"class": "col-offset-2 noticefieldvalue"})
